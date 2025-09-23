@@ -66,6 +66,14 @@ brew services start mongodb-community
 cd backend
 npm run seed
 ```
+پس از اجرا ای دستور بعد از بالا آمد سیتم با دو کاربر زیر میتوا در دوبخش کاربر عادی و ادمی لاگی کرد
+کاربر عادی : 
+-username = user@example.com
+-passsword = user123
+
+برای پل ادمین:
+-username = admin@example.com
+-passsword = admin123
 
 #### 4. اجرای پروژه
 
