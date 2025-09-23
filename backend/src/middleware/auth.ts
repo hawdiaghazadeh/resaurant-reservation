@@ -6,7 +6,7 @@ export interface AuthRequest extends Request {
   user?: IUser
 }
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
+const JWT_SECRET = 'restaurant-reservation-secret-key-2024'
 
 export const generateToken = (userId: string): string => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' })

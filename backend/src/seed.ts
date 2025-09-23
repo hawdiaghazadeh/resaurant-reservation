@@ -3,7 +3,7 @@ import { TableModel } from './models/Table'
 import { MenuItemModel } from './models/MenuItem'
 import { User } from './models/User'
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/reservation'
+const MONGO_URI = 'mongodb://localhost:27017/restaurant-reservation'
 
 async function seed() {
   try {

@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
@@ -13,7 +12,7 @@ const app = express()
 
 app.use(helmet())
 app.use(cors({ 
-  origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : 'http://localhost:5173',
+  origin: 'http://localhost:5173',
   credentials: true
 }))
 app.use(express.json())
@@ -31,7 +30,7 @@ const swaggerSpec = swaggerJsdoc({
       description: 'API documentation for Reservation system',
     },
     servers: [
-      { url: 'http://localhost:' + (process.env.PORT || 4000) }
+      { url: 'http://localhost:4000' }
     ],
   },
   apis: ['src/routes/**/*.ts'],
@@ -39,8 +38,8 @@ const swaggerSpec = swaggerJsdoc({
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/reservation'
-const PORT = Number(process.env.PORT || 4000)
+const MONGO_URI = 'mongodb://localhost:27017/restaurant-reservation'
+const PORT = 4000
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok' })
