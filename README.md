@@ -30,7 +30,7 @@
 
 #### 1. کلون کردن پروژه
 ```bash
-git clone <repository-url>
+git clone https://github.com/hawdiaghazadeh/resaurant-reservation.git
 cd resaurant-reservation
 ```
 
@@ -179,32 +179,12 @@ reservation/
 ## نکات مهم
 
 1. **محیط توسعه**: پروژه برای محیط development تنظیم شده است
-2. **پایگاه داده**: از MongoDB محلی استفاده می‌کند (قابل تغییر به Atlas)
+2. **پایگاه داده**: از MongoDB استفاده می‌کند 
 3. **CORS**: برای توسعه، CORS برای همه origins باز است
 4. **فونت**: از فونت Vazirmatn برای نمایش بهتر متن فارسی استفاده شده
-
-## توسعه و سفارشی‌سازی
-
-### اضافه کردن دسته‌بندی جدید منو
-1. در `backend/src/models/MenuItem.ts` enum category را بروزرسانی کنید
-2. در `frontend/src/lib/api.ts` نوع MenuItem را بروزرسانی کنید
-3. داده‌های seed را در `backend/src/seed.ts` اضافه کنید
-
-### تغییر تم‌ها
-تم‌ها در `frontend/tailwind.config.ts` تعریف شده‌اند و قابل سفارشی‌سازی هستند.
-
-## عیب‌یابی
 
 ### مشکلات رایج
 
 1. **خطای اتصال به MongoDB**: مطمئن شوید MongoDB در حال اجرا است
 2. **خطای CORS**: بررسی کنید که backend روی پورت 4000 اجرا می‌شود
 3. **مشکل در بارگذاری فونت**: مطمئن شوید پکیج @fontsource/vazirmatn نصب شده
-
-## مشارکت
-
-برای مشارکت در پروژه:
-1. Fork کنید
-2. Branch جدید ایجاد کنید
-3. تغییرات خود را commit کنید
-4. Pull Request ارسال کنید
