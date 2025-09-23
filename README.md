@@ -26,8 +26,15 @@
 - MongoDB (محلی یا Atlas)
 - npm یا yarn
 
-### نصب وابستگی‌ها
+### 🚀 راه‌اندازی سریع
 
+#### 1. کلون کردن پروژه
+```bash
+git clone <repository-url>
+cd resaurant-reservation
+```
+
+#### 2. نصب وابستگی‌ها
 ```bash
 # نصب وابستگی‌های اصلی
 npm install
@@ -41,11 +48,17 @@ cd ../frontend
 npm install
 ```
 
-### راه‌اندازی پایگاه داده
+#### 3. راه‌اندازی پایگاه داده
 
 1. MongoDB را اجرا کنید:
 ```bash
+# Windows
 mongod
+
+# Linux/Mac
+sudo systemctl start mongod
+# یا
+brew services start mongodb-community
 ```
 
 2. داده‌های اولیه را بارگذاری کنید:
@@ -54,39 +67,18 @@ cd backend
 npm run seed
 ```
 
-### اجرای پروژه
+#### 4. اجرای پروژه
 
-#### روش 1: اجرای همزمان (توصیه شده)
-```bash
-# از پوشه اصلی
-npm run dev
-```
-
-#### روش 2: اجرای جداگانه
-
-Backend:
+**Backend (ترمینال اول):**
 ```bash
 cd backend
 npm run dev
 ```
 
-Frontend:
+**Frontend (ترمینال دوم):**
 ```bash
 cd frontend
 npm run dev
-```
-
-#### روش 3: استفاده از فایل‌های Batch (ویندوز)
-```bash
-# اجرای همزمان هر دو سرور
-start-all.bat
-
-# یا اجرای جداگانه
-start-backend.bat        # فقط backend (production mode)
-start-backend-dev.bat    # فقط backend (development mode)
-start-frontend.bat       # فقط frontend
-start-mongodb.bat        # اجرای MongoDB
-seed-database.bat        # بارگذاری داده‌های اولیه
 ```
 
 ## دسترسی به اپلیکیشن
@@ -94,6 +86,28 @@ seed-database.bat        # بارگذاری داده‌های اولیه
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:4000
 - Health Check: http://localhost:4000/health
+
+## عیب‌یابی
+
+### مشکلات رایج
+
+1. **خطای اتصال به MongoDB**: مطمئن شوید MongoDB در حال اجرا است
+2. **خطای CORS**: بررسی کنید که backend روی پورت 4000 اجرا می‌شود
+3. **مشکل در بارگذاری فونت**: مطمئن شوید پکیج @fontsource/vazirmatn نصب شده
+
+### پاک کردن و نصب مجدد
+```bash
+# پاک کردن node_modules
+rm -rf node_modules package-lock.json
+rm -rf backend/node_modules backend/package-lock.json
+rm -rf frontend/node_modules frontend/package-lock.json
+
+# نصب مجدد
+npm install
+cd backend && npm install
+cd ../frontend && npm install
+```
+
 
 ## ساختار پروژه
 
