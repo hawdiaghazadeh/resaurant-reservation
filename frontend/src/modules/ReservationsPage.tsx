@@ -12,15 +12,26 @@ export function ReservationsPage() {
   const loadReservations = async (searchParams?: { phone?: string; name?: string }) => {
     try {
       setLoading(true)
+      setError('')
       const params = new URLSearchParams()
       if (searchParams?.phone) params.append('phone', searchParams.phone)
       if (searchParams?.name) params.append('name', searchParams.name)
       
       const queryString = params.toString()
       const response = await apiGet<Reservation[]>(`/reservations${queryString ? `?${queryString}` : ''}`)
-      setReservations((response.data || []).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+      
+      console.log('Reservations response:', response)
+      
+      if (response.success && response.data) {
+        setReservations(response.data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+      } else {
+        setError(response.error || 'خطا در بارگذاری رزروها')
+        setReservations([])
+      }
     } catch (err) {
+      console.error('Error loading reservations:', err)
       setError('خطا در بارگذاری رزروها')
+      setReservations([])
     } finally {
       setLoading(false)
     }
@@ -232,7 +243,7 @@ export function ReservationsPage() {
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">رزروی یافت نشد</h3>
             <p className="text-gray-600">
-              {phone ? 'رزروی با این شماره تماس یافت نشد' : 'هنوز رزروی ثبت نکرده‌اید'}
+              {searchPhone || searchName ? 'رزروی با این مشخصات یافت نشد' : 'هنوز رزروی ثبت نکرده‌اید'}
             </p>
           </div>
         ) : (
